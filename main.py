@@ -5,8 +5,23 @@ import requests
 from datetime import datetime
 import pymongo
 from model import User
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = ['*']
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = origins,
+    allow_credentials = True,
+    allow_methods = ["*"],
+    allow_headers = ["*"],
+)
+
+
+
+
 
 # DataBase Connection Settings
 client = pymongo.MongoClient('mongodb+srv://kunalsrivastava0301:mongokunal03@cluster0.yveocwk.mongodb.net/')
